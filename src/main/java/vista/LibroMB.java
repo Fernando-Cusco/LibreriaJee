@@ -29,18 +29,19 @@ public class LibroMB {
 	
 	@PostConstruct
 	public void init() {
-		this.libro = new Libro();
+		libro = new Libro();
+		libro.agregarAuto(new LibroAutor());
 		listar();
 	}
 
 	
 	public String crearLibro() {
-		this.gestion.crearLibro(libro);
-		this.libro = null;
+		gestion.crearLibro(libro);
+		libro = null;
 		return null;
 	}
 	public String agregarAutor() {
-		this.libro.agregarAuto(new LibroAutor());
+		libro.agregarAuto(new LibroAutor());
 		return null;
 	}
 	

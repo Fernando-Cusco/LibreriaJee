@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+
+</h:head>
+<h:body>
+	<ui:composition template="layout.xhtml">
+		<ui:define name="content">
+
+			<center>
+				<h1>Crear Usuarios</h1>
+
+			</center>
+
+			<div class="container">
+				<h:form>
+					<div class="form-row">
+						<h:outputLabel value="Nombres: " for="nombres" />
+						<h:inputText class="form-control"
+							value="#{usuarioMB.usuario.nombres}" id="nombres" />
+						<h:message for="nombres" />
+					</div>
+
+					<div class="form-row">
+						<h:outputLabel value="Correo: " for="correo" />
+						<h:inputText class="form-control"
+							value="#{usuarioMB.usuario.correo}" id="correo" />
+						<h:message for="correo" />
+					</div>
+
+					<div class="form-row">
+						<h:outputLabel value="Contraseña: " for="password" />
+						<h:inputText class="form-control"
+							value="#{usuarioMB.usuario.password}" id="password" />
+						<h:message for="password" />
+					</div>
+
+					<div class="form-row">
+						<h:outputLabel value="Fecha Nacimiento:" for="fecha" />
+						<h:inputText  class="form-control" value="#{usuarioMB.usuario.fecha}" id="fecha">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:inputText>
+						<h:message for="fecha" />
+					</div>
+
+					<div class="form-row">
+						<h:outputLabel value="Telefono: " for="telefono" />
+						<h:inputText class="form-control"
+							value="#{usuarioMB.usuario.telefono}" id="telefono" />
+						<h:message for="telefono" />
+					</div>
+
+					<div class="form-row">
+						<h:outputLabel value="Es administrador:" for="admin" />
+						<h:selectBooleanCheckbox value="#{usuarioMB.usuario.permiso}"  class="form-control"
+							id="admin" />
+						<h:message for="admin" />
+					</div>
+					
+					<div class="container">
+						<h:dataTable class="table table-striped" value="#{usuarioMB.usuario.direcciones}" var="direccion">
+							<h:column>
+								<f:facet name="header">Ciudad</f:facet>
+								<h:inputText class="form-control" value="#{direccion.ciudad}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">Calles</f:facet>
+								<h:inputText class="form-control" value="#{direccion.calles}" />
+							</h:column>
+							<f:facet name="footer">
+								<h:commandButton class="btn btn-primary" action="#{usuarioMB.agregarDireccion()}" value="Asignar Direccion">
+									<f:ajax render="@form" execute="@form"/>
+								</h:commandButton>
+							</f:facet>
+						</h:dataTable>
+						
+						
+					</div>
+					<div class="container">
+						<h:commandButton class="btn btn-primary" action="#{usuarioMB.crearUsuario()}" value="Guardar Usuario"/>
+					</div>
+					
+				</h:form>
+			</div>
+
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

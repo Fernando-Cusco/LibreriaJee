@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	
+</h:head> 
+	<h:body>
+	<ui:composition template="layout.xhtml">
+		<ui:define name="content">
+			<div>
+				<h:dataTable class="table table-striped" value="#{usuarioMB.usuarios}" var="user">
+					<h:column>
+						<f:facet name="header">Id</f:facet>
+						#{user.id}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nombres</f:facet>
+						#{user.nombres}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Fecha Nacimiento</f:facet>
+						#{user.fecha}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Correo</f:facet>
+						#{user.correo}
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">Administrador</f:facet>
+						#{user.permiso}
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">Telefono</f:facet>
+						#{user.telefono}
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">Direccion</f:facet>
+						<h:dataTable class="table table-striped" value="#{user.direcciones}" var="direccion">
+							<h:column>
+								<f:facet name="header">Ciudad</f:facet>
+								#{direccion.ciudad}
+							</h:column>
+							<h:column>
+								<f:facet name="header">Calles</f:facet>
+								#{direccion.calles}
+							</h:column>
+						</h:dataTable>
+					</h:column>
+					
+				</h:dataTable>
+			</div>
+		</ui:define>
+		</ui:composition>
+	</h:body> 
+</html>

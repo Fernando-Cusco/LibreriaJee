@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-
+import modelo.Direccion;
 import modelo.Usuario;
 
 public class UsuarioDao {
@@ -39,5 +39,18 @@ public class UsuarioDao {
 	public void actualizarUsuaurio(Usuario usuario) {
 		em.merge(usuario);
 	}
+	
+	public Usuario login(String correo, String password) {
+		String jpql = "SELECT u FROM Usuario u where u.correo = :correo and u.password = :password";
+		Query query = em.createQuery(jpql, Usuario.class);
+		query.setParameter("correo", correo);
+		query.setParameter("password", password);
+		Usuario usuario = (Usuario) query.getSingleResult();
+		
+		return usuario;
+	}
+	
+	
 }
+
 

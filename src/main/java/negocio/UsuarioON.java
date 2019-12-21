@@ -33,4 +33,8 @@ public class UsuarioON {
 	public void actualizarUsuaurio(Usuario usuario) {
 		dao.actualizarUsuaurio(usuario);
 	}
+	
+	public Usuario login(String correo, String password) {
+		return dao.login(correo, password);
+	}
 }

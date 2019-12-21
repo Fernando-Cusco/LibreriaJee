@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<meta charset='utf-8' />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet"
+		href="webjars/bootstrap/4.4.1/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="resources/css/style.css" />
+
+</h:head>
+
+<body>
+
+
+	<ui:insert name="menu">
+
+		<div class="sidebar-container">
+			<div class="sidebar-logo">Control de libros</div>
+			<ul class="sidebar-navigation">
+				<li class="header">Menu</li>
+				<li><a href="#"> <i class="fa fa-home" aria-hidden="true"></i>
+						Inicio
+				</a></li>
+				<li><h:link outcome="libros"> <i class="fa fa-tachometer"
+						aria-hidden="true"></i> Agregar Libros
+				</h:link></li>
+				<li><h:link outcome="autores"> <i class="fa fa-tachometer"
+						aria-hidden="true"></i> Agregar Autores
+				</h:link></li>
+				<li><h:link outcome="listar-libros"> <i class="fa fa-tachometer"
+						aria-hidden="true"></i> Listar Libros
+				</h:link></li>
+				<li><h:link outcome="listar-autores"> <i class="fa fa-tachometer"
+						aria-hidden="true"></i> Listar Autores
+				</h:link></li>
+				<li class="header"></li>
+				<li><a href="#"> <i class="fa fa-users" aria-hidden="true"></i>
+						Facturas
+				</a></li>
+				<li><a href="#"> <i class="fa fa-cog" aria-hidden="true"></i>
+						Clientes
+				</a></li>
+				<li><a href="#"> <i class="fa fa-info-circle"
+						aria-hidden="true"></i> Informacion
+				</a></li>
+			</ul>
+		</div>
+
+		<div class="content-container">
+
+			<ui:insert name="content">
+				
+			</ui:insert>
+		</div>
+
+	</ui:insert>
+
+
+	
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <script src="webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="webjars/bootstrap/js/bootstrap.min.js"></script>
+	<script src="webjars/jquery/3.4.1/jquery.min.js"></script>
+	<script src="webjars/jquery/jquery.min.js"></script> -->

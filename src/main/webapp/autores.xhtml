@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+
+</h:head>
+<h:body>
+	<ui:composition template="layout.xhtml">
+		<ui:define name="content">
+			<center>
+				<h1>Crear Autores</h1>
+			</center>
+
+			<div class="container">
+				<h:form>
+					<div class="form-row">
+
+						<h:outputLabel value="Nombres: " for="nombres" />
+						<h:inputText class="form-control" value="#{autorMB.autor.nombres}"
+							id="nombres" />
+						<h:message for="nombres" />
+
+					</div>
+
+
+					<div class="form-row">
+
+						<h:outputLabel value="Nacionalidad: " for="nacionalidad" />
+						<h:inputText class="form-control" value="#{autorMB.autor.nacionalidad}"
+							id="nacionalidad" />
+						<h:message for="nacionalidad" />
+
+					</div>
+					
+					<div class="form-row">
+
+						<h:outputLabel value="Numero de publicaciones: " for="numeropublicaciones" />
+						<h:inputText class="form-control" value="#{autorMB.autor.numeroPublicaciones}"
+							id="numeropublicaciones" />
+						<h:message for="numeropublicaciones" />
+
+					</div>
+
+					
+
+					
+				
+					<div class="container">
+						<h:commandButton class="btn btn-primary"
+							action="#{autorMB.agregarAutor()}" value="Guardar Autor" />
+					</div>
+				</h:form>
+			</div>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

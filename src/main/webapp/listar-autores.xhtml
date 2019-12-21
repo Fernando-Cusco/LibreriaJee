@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	
+</h:head> 
+	<h:body>
+	<ui:composition template="layout.xhtml">
+		<ui:define name="content">
+			<div>
+				<h:dataTable class="table table-striped" value="#{autorMB.autores}" var="autor">
+					<h:column>
+						<f:facet name="header">Id</f:facet>
+						#{autor.id}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nombres</f:facet>
+						#{autor.nombres}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nacionalidad</f:facet>
+						#{autor.nacionalidad}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Numero de publicaciones</f:facet>
+						#{autor.numeroPublicaciones}
+					</h:column>
+				</h:dataTable>
+			</div>
+		</ui:define>
+		</ui:composition>
+	</h:body> 
+</html>

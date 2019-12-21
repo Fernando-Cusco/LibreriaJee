@@ -27,5 +27,17 @@ public class UsuarioDao {
 		}
 		return usuarios;
 	}
+	
+	public void eliminar(int id) {
+		em.remove(buscar(id));
+	}
+	
+	public Usuario buscar(int id) {
+		return em.find(Usuario.class, id);
+	}
+	
+	public void actualizarUsuaurio(Usuario usuario) {
+		em.merge(usuario);
+	}
 }
 

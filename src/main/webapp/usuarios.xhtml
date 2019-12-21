@@ -4,7 +4,11 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-
+	<f:metadata>
+		<f:viewParam id="id" name="id" value="#{usuarioMB.id}"></f:viewParam>
+		<f:viewParam id="updated" name="updated" value="#{usuarioMB.updated}"></f:viewParam>
+		<f:viewAction action="#{usuarioMB.buscar}" />
+	</f:metadata>
 </h:head>
 <h:body>
 	<ui:composition template="layout.xhtml">

@@ -21,4 +21,16 @@ public class UsuarioON {
 	public List<Usuario> mostrarUsarios() {
 		return dao.mostrarUsuarios();
 	}
+	
+	public void eliminar(int id) {
+		dao.eliminar(id);
+	}
+	
+	public Usuario buscar(int id) {
+		return dao.buscar(id);
+	}
+	
+	public void actualizarUsuaurio(Usuario usuario) {
+		dao.actualizarUsuaurio(usuario);
+	}
 }

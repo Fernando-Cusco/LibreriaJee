@@ -38,8 +38,7 @@ public class Usuario {
 	@NotNull
 	private String telefono;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "direcciones_id")
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Direccion> direcciones;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -53,7 +52,6 @@ public class Usuario {
 	
 	
 	public void agregarDireccion(Direccion direccion) {
-		System.out.println("DIRECCION: "+direccion.toString());
 		if(direcciones == null) {
 			direcciones = new ArrayList<Direccion>();
 		}

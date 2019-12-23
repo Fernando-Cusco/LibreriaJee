@@ -1,106 +1,123 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
-
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<!-- xmlns:h="http://java.sun.com/jsf/html" -->
+<!-- xmlns:h="http://xmlns.jcp.org/jsf/html" -->
 <h:head>
-	
-</h:head> 
-	<h:body>
-		<ui:composition template="layout.xhtml">
-			<ui:define name="content">
-				<center>
-					<h1>Crear Libros</h1>
-				</center>
-				
-				<div class="container">
-					<h:form>
-						<div class="form-row">
-							
-								<h:outputLabel value="Titulo: " for="titulo"/>
-								<h:inputText class="form-control" value="#{libroMB.libro.titulo}" id="titulo" />
-								<h:message for="titulo"/>
-							
-						</div>
-						
-						
-						<div class="form-row">
-							
-								<h:outputLabel value="Descripcion: " for="desc"/>
-								<h:inputTextarea class="form-control" value="#{libroMB.libro.descripcion}" id="desc" />
-								<h:message for="desc"/>
-							
-						</div>
-						
-						<div class="form-row">
-							
-								<h:outputLabel value="Portada: " for="portada"/>
-								<h:inputText class="form-control" value="#{libroMB.libro.portada}" id="portada" />
-								<h:message for="portada"/>
-							
-						</div>
-						
-						<div class="form-row">
-							
-								<h:outputLabel value="Fecha Publicacion: " for="fecha"/>
-								<h:inputText class="form-control" value="#{libroMB.libro.fechaPublicacion}" id="fecha">
-									<f:convertDateTime pattern="dd/MM/yyyy"/>
+
+</h:head>
+<h:body>
+	<ui:composition template="layout.xhtml">
+		<ui:define name="content">
+			<center>
+				<h1>Crear Libros</h1>
+			</center>
+
+			<div class="container">
+				<h:form enctype="multipart/form-data">
+					<div class="form-row">
+
+						<h:outputLabel value="Titulo: " for="titulo" />
+						<h:inputText class="form-control" value="#{libroMB.libro.titulo}"
+							id="titulo" />
+						<h:message for="titulo" />
+
+					</div>
+
+
+					<div class="form-row">
+
+						<h:outputLabel value="Descripcion: " for="desc" />
+						<h:inputTextarea class="form-control"
+							value="#{libroMB.libro.descripcion}" id="desc" />
+						<h:message for="desc" />
+
+					</div>
+
+					<div class="form-row">
+
+						<h:outputLabel value="Portada: " for="portada" />
+						<p:growl showDetail="true"/>
+						<p:fileUpload value="#{libroMB.file}" mode="simple" />
+						<!-- <h:inputFile id="portada" value="#{libroMB.libro.portada}" requiredMessage="Sube una iamgen">
+								</h:inputFile> -->
+						<!-- <h:inputText class="form-control" value="#{libroMB.libro.portada}" id="portada" /> -->
+						<h:message for="portada" />
+
+
+					</div>
+
+					<div class="form-row">
+
+						<h:outputLabel value="Fecha Publicacion: " for="fecha" />
+						<h:inputText class="form-control"
+							value="#{libroMB.libro.fechaPublicacion}" id="fecha">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:inputText>
+						<h:message for="fecha" />
+
+					</div>
+
+					<div class="form-row">
+
+						<h:outputLabel value="Numero de paginas: " for="paginas" />
+						<h:inputText class="form-control" value="#{libroMB.libro.paginas}"
+							id="paginas" />
+						<h:message for="paginas" />
+
+					</div>
+
+					<div class="form-row">
+
+						<h:outputLabel value="Precio: " for="precio" />
+						<h:inputText class="form-control" value="#{libroMB.libro.precio}"
+							id="precio" />
+						<h:message for="precio" />
+
+					</div>
+
+					<div class="form-row">
+
+						<h:outputLabel value="Stock: " for="stock" />
+						<h:inputText class="form-control" value="#{libroMB.libro.stock}"
+							id="stock" />
+						<h:message for="stock" />
+
+					</div>
+
+					<div>
+						<h3>Agregar Autor</h3>
+						<h:dataTable class="table table-striped"
+							value="#{libroMB.libro.autores}" var="aut">
+							<h:column>
+								<f:facet name="header">Nombres</f:facet>
+								<h:inputText value="#{aut.nombres}" id="nombres">
+									<f:ajax render="nombreaut" execute="nombres"
+										listener="#{libroMB.buscarAutor()}"></f:ajax>
 								</h:inputText>
-								<h:message for="fecha"/>
-							
-						</div>
-						
-						<div class="form-row">
-							
-								<h:outputLabel value="Numero de paginas: " for="paginas"/>
-								<h:inputText  class="form-control" value="#{libroMB.libro.paginas}" id="paginas" />
-								<h:message for="paginas"/>
-							
-						</div>
-						
-						<div class="form-row">
-							
-								<h:outputLabel value="Precio: " for="precio"/>
-								<h:inputText  class="form-control" value="#{libroMB.libro.precio}" id="precio" />
-								<h:message for="precio"/>
-							
-						</div>
-						
-						<div class="form-row">
-							
-								<h:outputLabel value="Stock: " for="stock"/>
-								<h:inputText  class="form-control" value="#{libroMB.libro.stock}" id="stock" />
-								<h:message for="stock"/>
-							
-						</div>
-						
-						<div>
-							<h3>Agregar Autor</h3>
-							<h:dataTable class="table table-striped" value="#{libroMB.libro.autores}" var="aut">
-								<h:column>
-									<f:facet name="header">Nombres</f:facet>
-									<h:inputText value="#{aut.nombres}" id="nombres">
-										<f:ajax render="nombreaut" execute="nombres" listener="#{libroMB.buscarAutor()}"></f:ajax>
-									</h:inputText>
-									<h:outputText id="nombreaut" value="#{aut.autor.nombres}"/>
-									<h:message for="nombres"/>
-									
-								</h:column>
-							</h:dataTable>
-							<h:commandButton class="btn btn-success" action="#{libroMB.buscarAutor(aut)}" value="Agregar Autor"/>
-							
-						</div>
-						
-						<div class="container">
-							<h:commandButton class="btn btn-primary" action="#{libroMB.crearLibro()}" value="Guardar Libro" />
-						</div>
-					</h:form>
-				</div>
-				
-			</ui:define>
-		</ui:composition>
-	
-	
-	</h:body> 
+								<h:outputText id="nombreaut" value="#{aut.autor.nombres}" />
+								<h:message for="nombres" />
+
+							</h:column>
+						</h:dataTable>
+						<h:commandButton class="btn btn-success"
+							action="#{libroMB.buscarAutor(aut)}" value="Agregar Autor" />
+
+					</div>
+
+					<div class="container">
+						<h:commandButton class="btn btn-primary"
+							action="#{libroMB.crearLibro()}" value="Guardar Libro" />
+					</div>
+				</h:form>
+			</div>
+
+		</ui:define>
+	</ui:composition>
+
+
+</h:body>
 </html>

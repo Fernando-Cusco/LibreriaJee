@@ -1,6 +1,8 @@
 package modelo;
 
 
+import java.io.InputStream;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,6 +29,7 @@ public class Libro {
 	@NotNull(message = "titulo es requerido")
 	private String titulo;
 	private String descripcion;
+	
 	private String portada;
 	@NotNull(message = "fecha publicacion es requerido")
 	@Column(name = "fecha_publicion")
@@ -66,13 +69,8 @@ public class Libro {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public String getPortada() {
-		return portada;
-	}
-	public void setPortada(String portada) {
-		this.portada = portada;
-	}
 	
+
 	public Date getFechaPublicacion() {
 		return fechaPublicacion;
 	}
@@ -110,6 +108,14 @@ public class Libro {
 
 	public int getId() {
 		return id;
+	}
+
+	public String getPortada() {
+		return portada;
+	}
+
+	public void setPortada(String portada) {
+		this.portada = portada;
 	}
 	
 	

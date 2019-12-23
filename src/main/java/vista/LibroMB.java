@@ -1,10 +1,14 @@
 package vista;
 
+import java.io.IOException;
+import java.sql.Blob;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
+
+import org.primefaces.model.UploadedFile;
 
 import modelo.Autor;
 import modelo.Libro;
@@ -25,6 +29,7 @@ public class LibroMB {
 	@Inject
 	private AutorON autoron;
 	
+	private UploadedFile file;
 	
 	
 	@PostConstruct
@@ -36,8 +41,18 @@ public class LibroMB {
 
 	
 	public String crearLibro() {
-		gestion.crearLibro(libro);
-		libro = null;
+		
+		try {
+			if(file != null ) {
+				System.out.println("hola");
+				libro.setPortada(file.getInputstream().toString());
+				gestion.crearLibro(libro);
+				libro = null;
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 	public String agregarAutor() {
@@ -81,4 +96,15 @@ public class LibroMB {
 		this.libro = libro;
 	}
 
+
+	public UploadedFile getFile() {
+		return file;
+	}
+
+
+	public void setFile(UploadedFile file) {
+		this.file = file;
+	}
+
+	
 }

@@ -1,5 +1,7 @@
 package modelo;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +11,8 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "direcciones")
-public class Direccion {
+public class Direccion implements Serializable{
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +22,13 @@ public class Direccion {
 	@NotNull(message = "calle es requerdio")
 	private String calles;
 	
+	
+	
+	
+	public Direccion() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getId() {
 		return id;
 	}
@@ -41,5 +51,8 @@ public class Direccion {
 	public String toString() {
 		return "Direccion [id=" + id + ", ciudad=" + ciudad + ", calles=" + calles + "]";
 	}
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 }

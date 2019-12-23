@@ -1,5 +1,6 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,7 +11,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -19,8 +19,9 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+public class Usuario implements Serializable{
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -30,7 +31,9 @@ public class Usuario {
 	private String correo;
 	@NotNull(message = "contraseña es requerido")
 	private String password;
-	@NotNull
+	
+	
+	
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	private boolean permiso;
@@ -51,6 +54,15 @@ public class Usuario {
 	private List<Compra> compras;
 	
 	
+	
+	
+	
+	public Usuario() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public void agregarDireccion(Direccion direccion) {
 		if(direcciones == null) {
 			direcciones = new ArrayList<Direccion>();
@@ -125,7 +137,19 @@ public class Usuario {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nombres=" + nombres + ", correo=" + correo + ", password=" + password
+				+ ", fecha=" + fecha + ", permiso=" + permiso + ", telefono=" + telefono + "]";
+	}
+
 	
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 }

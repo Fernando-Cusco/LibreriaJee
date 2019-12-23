@@ -8,6 +8,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes;
+
 import modelo.Direccion;
 import modelo.Usuario;
 import modelotmp.UsuarioTMP;
@@ -45,19 +48,13 @@ public class UsuarioService {
 		System.out.println("LLEGANDO ESTOS DAOTS "+usuario.toString());
 		Respuesta r = new Respuesta();
 		try {
-			
-			if(usuario.getDirecciones() != null ) {
-				for(Direccion dir: usuario.getDirecciones()) {
-					usuario.agregarDireccion(dir);
-				}
-			}
 			user.crearUsuario(usuario);
 			r.setId(200);
 			r.setMensaje("Usuario: "+usuario.getNombres()+" creado exitosamente");
 		} catch (Exception e) {
 			r.setId(400);
 			r.setMensaje("Error");
-			e.printStackTrace();
+			
 		}
 		return r;
 	}

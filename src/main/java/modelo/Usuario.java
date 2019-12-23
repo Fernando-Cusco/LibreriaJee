@@ -17,6 +17,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "usuarios")
 public class Usuario implements Serializable{
@@ -42,6 +44,7 @@ public class Usuario implements Serializable{
 	private String telefono;
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	private List<Direccion> direcciones;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

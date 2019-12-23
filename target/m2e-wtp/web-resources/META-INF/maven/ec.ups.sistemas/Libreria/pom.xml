@@ -104,6 +104,13 @@
 			<artifactId>primefaces</artifactId>
 			<version>7.0</version>
 		</dependency>
+		<!-- dependencia para la clase JcksonConfig-->
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-hibernate5</artifactId>
+			<version>2.10.1</version>
+		</dependency>
+
 
 		<!-- First declare the APIs we depend on and need for compilation. All 
 			of them are provided by JBoss WildFly -->

@@ -22,4 +22,12 @@ public class LibroON {
 		return this.librodao.mostrarLibros();
 	}
 	
+	public Libro buscarLibro(Integer id) {
+		return librodao.buscarLibro(id);
+	}
+	
+	public List<Libro> buscarSimilar(String key) {
+		return librodao.buscarSimilar(key);
+	}
+	
 }

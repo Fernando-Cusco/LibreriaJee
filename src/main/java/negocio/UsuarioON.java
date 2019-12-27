@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import dao.UsuarioDao;
+import modelo.Tarjeta;
 import modelo.Usuario;
 
 @Stateless
@@ -37,4 +38,8 @@ public class UsuarioON {
 	public Usuario login(String correo, String password) {
 		return dao.login(correo, password);
 	}
+	
+//	public List<Usuario> tarjetas(int id) {
+//		return dao.tarjetas(id);
+//	}
 }

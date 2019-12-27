@@ -15,12 +15,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuarios", uniqueConstraints = @UniqueConstraint(columnNames = "correo"))
 public class Usuario implements Serializable{
 
 	
@@ -71,6 +72,13 @@ public class Usuario implements Serializable{
 			direcciones = new ArrayList<Direccion>();
 		}
 		this.direcciones.add(direccion);
+	}
+	
+	public void agregarVoto(Voto voto) {
+		if(votos == null) {
+			votos = new ArrayList<Voto>();
+		}
+		votos.add(voto);
 	}
 	
 	

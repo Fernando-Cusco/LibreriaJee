@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import modelo.Direccion;
+import modelo.Tarjeta;
 import modelo.Usuario;
 
 public class UsuarioDao {
@@ -50,6 +50,18 @@ public class UsuarioDao {
 		return usuario;
 	}
 	
+	public void realizarVoto() {
+		
+	}
+	
+	
+//	public List<Usuario> tarjetas(int id) {
+//		String jpql = "SELECT t FROM Usuario u, Tarjeta t where t = :id";
+//		Query query= em.createQuery(jpql, Usuario.class);
+//		query.setParameter("id", id);
+//		List<Usuario> tarjetas = query.getResultList();
+//		return tarjetas;
+//	}
 	
 }
 

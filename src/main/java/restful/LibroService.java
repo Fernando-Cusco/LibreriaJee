@@ -38,7 +38,7 @@ public class LibroService {
 	@GET
 	@Path("/similar")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Libro> buscarLibro(@QueryParam("id") long id, @QueryParam("key") String key) {
+	public List<Libro> buscarLibro(@QueryParam("key") String key) {
 		return libro.buscarSimilar(key);
 	}
 	

@@ -135,6 +135,13 @@ public class Libro {
 	public void setPortada(String portada) {
 		this.portada = portada;
 	}
+
+	@Override
+	public String toString() {
+		return "Libro [id=" + id + ", titulo=" + titulo + ", descripcion=" + descripcion + ", portada=" + portada
+				+ ", fechaPublicacion=" + fechaPublicacion + ", paginas=" + paginas + ", precio=" + precio + ", stock="
+				+ stock + "]";
+	}
 	
 	
 }

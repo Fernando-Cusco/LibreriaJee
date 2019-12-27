@@ -38,9 +38,9 @@ public class LibroDao {
 	
 	public List<Libro> buscarSimilar(String key) {
 		System.out.println(key+" VALORES");
-		String jpql = "SELECT l FROM Libro l where l.titulo like :key";
+		String jpql = "SELECT l FROM Libro l where l.titulo like :key or l.descripcion like :key";
 		Query query = em.createQuery(jpql, Libro.class);
-		query.setParameter("key", key+"%");
+		query.setParameter("key", "%"+key+"%");
 		List<Libro> libros = query.getResultList();
 		for (Libro libro : libros) {
 			libro.getAutores().size();

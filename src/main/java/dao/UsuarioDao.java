@@ -49,10 +49,7 @@ public class UsuarioDao {
 		
 		return usuario;
 	}
-	
-	public void realizarVoto() {
-		
-	}
+
 	
 	
 //	public List<Usuario> tarjetas(int id) {

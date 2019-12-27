@@ -1,7 +1,7 @@
 package restful;
 
 
-import java.util.List;
+
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -10,21 +10,25 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import modelo.Libro;
-import modelo.Tarjeta;
 import modelo.Usuario;
 import modelo.Voto;
 import modelotmp.UsuarioTMP;
+import negocio.LibroON;
 import negocio.UsuarioON;
+import negocio.VotoON;
 
 @Path("/usuario")
 public class UsuarioService {
 	
 	@Inject
 	private UsuarioON user;
+	@Inject
+	private LibroON libs;
+	@Inject
+	private VotoON vots;
 	
 	
 	@POST
@@ -63,22 +67,23 @@ public class UsuarioService {
 		return r;
 	}
 	
+	
+	
 	@GET
 	@Path("/votar/{idu:[0-9][0-9]*}/{idl:[0-9][0-9]*}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public void votar(@PathParam("idu") int idu, @PathParam("idl") int idl) {
-		Usuario u = new Usuario();
-		Libro l = new Libro();
-		u.agregarVoto(new Voto());
-		l.agregarVoto(new Voto());
+		Libro l = libs.buscarLibro(idl);
+		Usuario u = user.buscar(idu);
+		System.out.println("Usuario: "+u.toString());
+		System.out.println("Libro: "+l.toString());
+		Voto v = new Voto();
+		v.agregarLibro(l);
+		v.agregarUsuario(u);
+		vots.realizarVoto(v);
+		
 	}
 	
-//	@GET
-//	@Path("/tarjetas/{id:[0-9][0-9]*}")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public List<Usuario> tarjetas(@QueryParam("id") int id) {
-//		return user.tarjetas(id);
-//	}
 	
 	
 }

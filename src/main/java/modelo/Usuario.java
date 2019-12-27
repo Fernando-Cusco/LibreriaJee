@@ -11,7 +11,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -51,12 +53,13 @@ public class Usuario implements Serializable{
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Tarjeta> tarjetas;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Voto> votos;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Compra> compras;
 	
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "id_voto", referencedColumnName = "id")
+//	private Voto voto;
 	
 	
 	
@@ -72,13 +75,6 @@ public class Usuario implements Serializable{
 			direcciones = new ArrayList<Direccion>();
 		}
 		this.direcciones.add(direccion);
-	}
-	
-	public void agregarVoto(Voto voto) {
-		if(votos == null) {
-			votos = new ArrayList<Voto>();
-		}
-		votos.add(voto);
 	}
 	
 	
@@ -130,12 +126,6 @@ public class Usuario implements Serializable{
 	public void setTarjetas(List<Tarjeta> tarjetas) {
 		this.tarjetas = tarjetas;
 	}
-	public List<Voto> getVotos() {
-		return votos;
-	}
-	public void setVotos(List<Voto> votos) {
-		this.votos = votos;
-	}
 	public List<Compra> getCompras() {
 		return compras;
 	}
@@ -150,15 +140,19 @@ public class Usuario implements Serializable{
 	}
 
 
+	
+	
+	
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombres=" + nombres + ", correo=" + correo + ", password=" + password
 				+ ", fecha=" + fecha + ", permiso=" + permiso + ", telefono=" + telefono + "]";
 	}
 
-	
-	
-	
+
+
+
+
 	/**
 	 * 
 	 */

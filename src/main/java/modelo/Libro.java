@@ -1,8 +1,5 @@
 package modelo;
 
-
-import java.io.InputStream;
-import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,7 +12,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -46,9 +45,19 @@ public class Libro {
 	@JoinColumn(name = "libtaut_id")
 	private List<LibroAutor> autores;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-	private List<Voto> votos;
+	/*@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "vtlib_id")
+	private Usuario usuario;*/
 	
+	
+	/*@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+	private List<Voto> votos;
+	*/
+	
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	//@JoinColumn(name = "votolib_id")
+	private List<Voto> votos;
 	
 	public void agregarAuto(LibroAutor libroAutor) {
 		if(this.autores == null) {
@@ -79,15 +88,6 @@ public class Libro {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
-
-	public List<Voto> getVotos() {
-		return votos;
-	}
-
-	public void setVotos(List<Voto> votos) {
-		this.votos = votos;
-	}
 
 	public Date getFechaPublicacion() {
 		return fechaPublicacion;
@@ -116,14 +116,7 @@ public class Libro {
 		this.stock = stock;
 	}
 
-	public List<LibroAutor> getAutores() {
-		return autores;
-	}
-
-	public void setAutores(List<LibroAutor> autores) {
-		this.autores = autores;
-	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -135,13 +128,33 @@ public class Libro {
 	public void setPortada(String portada) {
 		this.portada = portada;
 	}
+	
+	
+	
+
+	public List<LibroAutor> getAutores() {
+		return autores;
+	}
+
+	public void setAutores(List<LibroAutor> autores) {
+		this.autores = autores;
+	}
+	
+	
+
+	public List<Voto> getVotos() {
+		return votos;
+	}
+
+	public void setVotos(List<Voto> votos) {
+		this.votos = votos;
+	}
 
 	@Override
 	public String toString() {
 		return "Libro [id=" + id + ", titulo=" + titulo + ", descripcion=" + descripcion + ", portada=" + portada
 				+ ", fechaPublicacion=" + fechaPublicacion + ", paginas=" + paginas + ", precio=" + precio + ", stock="
-				+ stock + "]";
+				+ stock + ", autores=" + autores + "]";
 	}
-	
 	
 }

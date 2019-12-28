@@ -61,7 +61,16 @@ public class Usuario implements Serializable{
 //	@JoinColumn(name = "id_voto", referencedColumnName = "id")
 //	private Voto voto;
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	//@JoinColumn(name = "userlib_id")
+	private List<Voto> votos;
 	
+	public void agregarVoto(Voto voto) {
+		if(votos == null) {
+			votos = new ArrayList<Voto>();
+		}
+		votos.add(voto);
+	}
 	
 	
 	public Usuario() {
@@ -143,6 +152,16 @@ public class Usuario implements Serializable{
 	
 	
 	
+	public List<Voto> getVotos() {
+		return votos;
+	}
+
+
+	public void setVotos(List<Voto> votos) {
+		this.votos = votos;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombres=" + nombres + ", correo=" + correo + ", password=" + password

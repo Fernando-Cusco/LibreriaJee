@@ -31,6 +31,7 @@ public class LibroService {
 	@Path("/buscar/{id:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Libro buscarLibro(@PathParam("id") int id) {
+		System.out.println(libro.buscarLibro(id));
 		return libro.buscarLibro(id);
 	}
 	

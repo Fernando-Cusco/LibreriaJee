@@ -78,8 +78,8 @@ public class UsuarioService {
 		System.out.println("Usuario: "+u.toString());
 		System.out.println("Libro: "+l.toString());
 		Voto v = new Voto();
-		v.agregarLibro(l);
-		v.agregarUsuario(u);
+		//v.agregarLibro(l);
+		//v.agregarUsuario(u);
 		vots.realizarVoto(v);
 		
 	}

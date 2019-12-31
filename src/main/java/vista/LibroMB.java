@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
 import org.primefaces.model.UploadedFile;
@@ -17,6 +18,7 @@ import negocio.AutorON;
 import negocio.LibroON;
 
 @ManagedBean
+@ViewScoped
 public class LibroMB {
 	
 	private Libro libro;
@@ -35,7 +37,7 @@ public class LibroMB {
 	@PostConstruct
 	public void init() {
 		libro = new Libro();
-		libro.agregarAuto(new LibroAutor());
+		//libro.agregarAuto(new LibroAutor());
 		listar();
 	}
 
@@ -68,13 +70,13 @@ public class LibroMB {
 	
 	public String buscarAutor(LibroAutor la) {
 		try {
-			Autor a = this.autoron.buscarAutor(la.getNombres());
+			Autor a = this.autoron.buscar(la.getIdBuscar());
 			System.out.println(a.toString()+" Autor");
 			la.setAutor(a);
 		} catch (Exception e) {
 			System.out.println("ERRORRRR: "+e.getMessage());
 		}
-		return "";
+		return null;
 	}
 	
 	

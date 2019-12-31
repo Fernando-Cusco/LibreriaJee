@@ -34,17 +34,10 @@ public class Autor {
 	private int numeroPublicaciones;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "autlib_id")
-	private List<Libro> libros;
+	@JoinColumn(name = "autor_id")
+	private List<LibroAutor> libros;
 	
-	
-	public void agregarLibro(Libro libro) {
-		if(this.libros == null) {
-			this.libros = new ArrayList<Libro>();
-		}
-		this.libros.add(libro);
-		
-	}
+
 	
 	
 	public int getId() {
@@ -73,22 +66,6 @@ public class Autor {
 	}
 
 
-	public List<Libro> getLibros() {
-		return libros;
-	}
-
-
-	public void setLibros(List<Libro> libros) {
-		this.libros = libros;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Autor [id=" + id + ", nombres=" + nombres + ", nacionalidad=" + nacionalidad + ", numeroPublicaciones="
-				+ numeroPublicaciones + ", libros=" + libros + "]";
-	}
-	
 	
 	
 }

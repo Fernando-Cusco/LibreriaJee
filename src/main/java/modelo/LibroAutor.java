@@ -26,12 +26,8 @@ public class LibroAutor {
 	private Autor autor;
 	
 	@Transient
-	private String nombres;
-	@Transient
-	private String nacionalidad;
-	@Transient
-	private String numero;
-
+	private int idBuscar;
+	
 
 	
 	public int getId() {
@@ -64,36 +60,16 @@ public class LibroAutor {
 	}
 
 
-	public String getNombres() {
-		return nombres;
+	public int getIdBuscar() {
+		return idBuscar;
 	}
 
 
-	public void setNombres(String nombres) {
-		this.nombres = nombres;
+	public void setIdBuscar(int idBuscar) {
+		this.idBuscar = idBuscar;
 	}
 
 
-	public String getNacionalidad() {
-		return nacionalidad;
-	}
-
-
-	public void setNacionalidad(String nacionalidad) {
-		this.nacionalidad = nacionalidad;
-	}
-
-
-	public String getNumero() {
-		return numero;
-	}
-
-
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-	
-	
 	
 
 }

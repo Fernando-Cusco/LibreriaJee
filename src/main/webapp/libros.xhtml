@@ -88,24 +88,19 @@
 
 					</div>
 
-					<div>
-						<h3>Agregar Autor</h3>
-						<h:dataTable class="table table-striped"
-							value="#{libroMB.libro.autores}" var="aut">
+					<div class="container">
+						<h4>Buscar autor: id</h4>
+						<h:dataTable value="#{libroMB.libro.autores}" var="la">
 							<h:column>
-								<f:facet name="header">Nombres</f:facet>
-								<h:inputText value="#{aut.nombres}" id="nombres">
-									<f:ajax render="nombreaut" execute="nombres"
-										listener="#{libroMB.buscarAutor()}"></f:ajax>
+								<f:facet name="header">Codigo Autor</f:facet>
+								<h:inputText value="#{la.idBuscar}" id="idBuscar">
+									<f:ajax render="autordato" execute="idBuscar" listener="#{libroMB.buscarAutor(la)}"/>
 								</h:inputText>
-								<h:outputText id="nombreaut" value="#{aut.autor.nombres}" />
-								<h:message for="nombres" />
-
+								<h:outputText id="autordato" value="#{la.autor.nombres}"/>
+								
 							</h:column>
 						</h:dataTable>
-						<h:commandButton class="btn btn-success"
-							action="#{libroMB.buscarAutor(aut)}" value="Agregar Autor" />
-
+						<h:commandButton action="#{libroMB.agregarAutor()}" value="Buscar Autor" />
 					</div>
 
 					<div class="container">

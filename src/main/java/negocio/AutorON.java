@@ -18,6 +18,10 @@ public class AutorON {
 		this.gestion.crearAutor(autor);
 	}
 	
+	public Autor buscar(int id) {
+		return gestion.buscar(id);
+	}
+	
 	public Autor buscarAutor(String nombres) {
 		return this.gestion.buscarAutor(nombres);
 	}

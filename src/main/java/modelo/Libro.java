@@ -42,21 +42,11 @@ public class Libro {
 	
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "libtaut_id")
+	@JoinColumn(name = "libro_id")
 	private List<LibroAutor> autores;
-	
-	/*@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "vtlib_id")
-	private Usuario usuario;*/
-	
-	
-	/*@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-	private List<Voto> votos;
-	*/
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	//@JoinColumn(name = "votolib_id")
 	private List<Voto> votos;
 	
 	public void agregarAuto(LibroAutor libroAutor) {

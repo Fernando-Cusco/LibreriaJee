@@ -18,6 +18,10 @@ public class AutorDao {
 		em.persist(autor);
 	}
 	
+	public Autor buscar(int id) {
+		return em.find(Autor.class, id);
+	}
+	
 	public Autor buscarAutor(String nombres) {
 		String jpql = "SELECT a FROM Autor a JOIN FETCH a where a.nombres = :nombres";
 		Query query = em.createQuery(jpql, Autor.class);
@@ -31,7 +35,7 @@ public class AutorDao {
 		Query query = em.createQuery(jpql, Autor.class);
 		List<Autor> autores = query.getResultList();
 		for(Autor autor : autores) {
-			autor.getLibros().size();
+			//autor.getLibros().size();
 		}
 		return autores;
 	}

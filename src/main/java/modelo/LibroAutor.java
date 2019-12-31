@@ -8,6 +8,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "libro_autor")
@@ -19,10 +21,12 @@ public class LibroAutor {
 	
 	
 	@ManyToOne
+	@JsonIgnore
 	private Libro libro;
 	
 	
 	@ManyToOne
+	@JsonIgnore
 	private Autor autor;
 	
 	@Transient

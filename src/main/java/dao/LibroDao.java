@@ -19,6 +19,7 @@ public class LibroDao {
 	}
 	
 	public List<Libro> mostrarLibros() {
+		// JOIN FETCH l.autores a
 		String jpql = "SELECT l FROM Libro l";
 		Query query = em.createQuery(jpql, Libro.class);
 		List<Libro> libros = query.getResultList();

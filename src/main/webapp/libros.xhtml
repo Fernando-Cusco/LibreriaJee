@@ -40,7 +40,7 @@
 					<div class="form-row">
 
 						<h:outputLabel value="Portada: " for="portada" />
-						<p:growl showDetail="true"/>
+						<p:growl showDetail="true" />
 						<p:fileUpload value="#{libroMB.file}" mode="simple" />
 						<!-- <h:inputFile id="portada" value="#{libroMB.libro.portada}" requiredMessage="Sube una iamgen">
 								</h:inputFile> -->
@@ -87,26 +87,38 @@
 						<h:message for="stock" />
 
 					</div>
-
+					<br />
+					<h5>Agregar Autor</h5>
 					<div class="container">
-						<h4>Buscar autor: id</h4>
-						<h:dataTable value="#{libroMB.libro.autores}" var="la">
-							<h:column>
-								<f:facet name="header">Codigo Autor</f:facet>
-								<h:inputText value="#{la.idBuscar}" id="idBuscar">
-									<f:ajax render="autordato" execute="idBuscar" listener="#{libroMB.buscarAutor(la)}"/>
-								</h:inputText>
-								<h:outputText id="autordato" value="#{la.autor.nombres}"/>
-								
-							</h:column>
-						</h:dataTable>
-						<h:commandButton action="#{libroMB.agregarAutor()}" value="Buscar Autor" />
+						<div class="row">
+							<div class="col-lg">
+								<h:dataTable value="#{libroMB.libro.autores}" var="la"
+									class="table">
+									<h:column class="thead-dark">
+										<f:facet name="header">Codigo Autor</f:facet>
+										<label>Id: </label> 
+										<h:inputText value="#{la.idBuscar}" id="idBuscar">
+											<f:ajax render="autordato" execute="idBuscar"
+												listener="#{libroMB.buscarAutor(la)}" />
+										</h:inputText>
+										<h:outputText id="autordato" value="#{la.autor.nombres}" />
+
+									</h:column>
+								</h:dataTable>
+							</div>
+							<div class="col-sm">
+								<h:commandButton action="#{libroMB.agregarAutor()}"
+									class="btn btn-dark btn-md" value="Agregar Autor" />
+							</div>
+							<div class="col-sm">
+								<h:commandButton class="btn btn-primary  btn-lg  btn-block"
+									action="#{libroMB.crearLibro()}" value="Guardar Libro" />
+							</div>
+
+						</div>
 					</div>
 
-					<div class="container">
-						<h:commandButton class="btn btn-primary"
-							action="#{libroMB.crearLibro()}" value="Guardar Libro" />
-					</div>
+
 				</h:form>
 			</div>
 

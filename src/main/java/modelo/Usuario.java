@@ -11,9 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -36,16 +34,11 @@ public class Usuario implements Serializable{
 	private String correo;
 	@NotNull(message = "contraseña es requerido")
 	private String password;
-	
-	
-	
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	private boolean permiso;
-	
 	@NotNull
 	private String telefono;
-	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	private List<Direccion> direcciones;
@@ -54,15 +47,14 @@ public class Usuario implements Serializable{
 	private List<Tarjeta> tarjetas;
 	
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Compra> compras;
 	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "id_voto", referencedColumnName = "id")
-//	private Voto voto;
+	
+	
+
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	//@JoinColumn(name = "userlib_id")
 	private List<Voto> votos;
 	
 	public void agregarVoto(Voto voto) {
@@ -75,7 +67,6 @@ public class Usuario implements Serializable{
 	
 	public Usuario() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 

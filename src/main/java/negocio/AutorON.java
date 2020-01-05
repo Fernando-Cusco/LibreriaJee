@@ -30,4 +30,8 @@ public class AutorON {
 		return this.gestion.mostrarAutores();
 	}
 	
+	public Autor libroautor(int id) {
+		return gestion.autores(id);
+	}
+	
 }

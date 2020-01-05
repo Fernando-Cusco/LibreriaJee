@@ -1,6 +1,6 @@
 package restful;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 import modelo.Autor;
 import modelo.Libro;
+import negocio.AutorON;
 import negocio.LibroON;
 
 @Path("/libros")
@@ -21,6 +22,9 @@ public class LibroService {
 	
 	@Inject
 	private LibroON libro;
+	
+	@Inject
+	private AutorON autor;
 	
 	@GET
 	@Path("todos")
@@ -42,6 +46,13 @@ public class LibroService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Libro> buscarLibro(@QueryParam("key") String key) {
 		return libro.buscarSimilar(key);
+	}
+	
+	@GET
+	@Path("/autor")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Autor libroautor() {
+		return autor.libroautor(0);
 	}
 	
 

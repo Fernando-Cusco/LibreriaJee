@@ -4,6 +4,9 @@ public class Detalle {
 
 	private int id;
 	private int cantidad;
+	
+	
+	
 	public int getId() {
 		return id;
 	}

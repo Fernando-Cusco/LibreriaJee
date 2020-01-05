@@ -40,6 +40,15 @@ public class AutorDao {
 		return autores;
 	}
 	
+	public Autor autores(int id) {
+		//JOIN FETCH la la.autor.id = :id
+		String jqpl = "SELECT la.autor FROM LibroAutor la JOIN FECTH la where la.autor.id = 1 ";
+		Query query = em.createQuery(jqpl, Autor.class);
+		//query.setParameter("id", id);
+		Autor autor = (Autor) query.getSingleResult();
+		return autor;
+	}
+	
 }
 
 

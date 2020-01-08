@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import modelo.Libro;
-import modelo.Usuario;
 
 public class LibroDao {
 	
@@ -29,11 +28,19 @@ public class LibroDao {
 		return libros;
 	}
 	
+	public Libro buscar(int id) {
+		return em.find(Libro.class, id);
+	}
+	
 	public Libro buscarLibro(Integer id) {
 		String jpql = "SELECT l FROM Libro l where l.id = :id";
 		Query query = em.createQuery(jpql, Libro.class);
 		query.setParameter("id", id);
 		Libro libro = (Libro) query.getSingleResult();
+		for(int i =0; i < libro.getAutores().size(); i++) {
+			libro.getAutores().get(i).getAutor().getId();
+		}
+		
 		return libro;
 	}
 	

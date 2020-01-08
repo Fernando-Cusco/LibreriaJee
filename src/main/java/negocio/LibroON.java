@@ -22,6 +22,10 @@ public class LibroON {
 		return this.librodao.mostrarLibros();
 	}
 	
+	public Libro buscar(int id) {
+		return librodao.buscar(id);
+	}
+	
 	public Libro buscarLibro(Integer id) {
 		return librodao.buscarLibro(id);
 	}

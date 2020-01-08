@@ -6,7 +6,6 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import dao.UsuarioDao;
-import modelo.Tarjeta;
 import modelo.Usuario;
 
 @Stateless

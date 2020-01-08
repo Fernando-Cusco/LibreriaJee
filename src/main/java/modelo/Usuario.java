@@ -49,11 +49,7 @@ public class Usuario implements Serializable{
 	
 	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Compra> compras;
-	
-	
-	
-
-	
+		
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private List<Voto> votos;
 	

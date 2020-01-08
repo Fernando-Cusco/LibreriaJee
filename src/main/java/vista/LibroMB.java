@@ -1,7 +1,6 @@
 package vista;
 
 import java.io.IOException;
-import java.sql.Blob;
 import java.util.List;
 
 import javax.annotation.PostConstruct;

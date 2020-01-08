@@ -1,6 +1,6 @@
 package restful;
 
-import java.util.ArrayList;
+
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -30,11 +30,6 @@ public class VotoService {
         v.setLib(l);
         v.setUser(u);
 		votoOn.realizarVoto(v); 
-       /* member.setName("Andres2");
-        if (member == null) {
-            throw new WebApplicationException(Response.Status.NOT_FOUND);
-        }
-        return member;*/
 		return v;
     }
 

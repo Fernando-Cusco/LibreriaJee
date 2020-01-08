@@ -46,5 +46,10 @@ public class Detalle {
 	public Double calcularSubtotal() {
 		return cantidad * libro.getPrecio();
 	}
+	@Override
+	public String toString() {
+		return "Detalle [id=" + id + ", cantidad=" + cantidad + ", libro=" + libro + "]";
+	}
+	
 	
 }

@@ -26,7 +26,7 @@ public class LibroON {
 		return librodao.buscar(id);
 	}
 	
-	public Libro buscarLibro(Integer id) {
+	public Libro buscarLibro(int id) {
 		return librodao.buscarLibro(id);
 	}
 	

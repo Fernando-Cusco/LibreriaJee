@@ -1,11 +1,13 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import modelo.Direccion;
 import modelo.Tarjeta;
 import modelo.Usuario;
 
@@ -25,6 +27,7 @@ public class UsuarioDao {
 		for (Usuario usuario : usuarios) {
 			usuario.getDirecciones().size();
 		}
+		
 		return usuarios;
 	}
 	
@@ -49,7 +52,36 @@ public class UsuarioDao {
 		
 		return usuario;
 	}
+	
+	public Usuario datosPago(int id) {
+		String jpql = "SELECT u FROM Usuario u JOIN FETCH u.direcciones where u.id = :id";
+		Query query = em.createQuery(jpql, Usuario.class);
+		query.setParameter("id", id);
+		Usuario u = (Usuario) query.getSingleResult();
+		List<Direccion> direcciones = new ArrayList<>();
+		for(Direccion d: u.getDirecciones()) {
+			direcciones.add(d);
+		}
+		
+		
+		return u;
+	}
+	
+	public Usuario tarjetas(int id) {
+		String jpql = "SELECT u FROM Usuario u JOIN FETCH u.tarjetas where u.id = :id";
+		Query query = em.createQuery(jpql, Usuario.class);
+		query.setParameter("id", id);
+		Usuario u = (Usuario) query.getSingleResult();
+		List<Tarjeta> tarjetas = new ArrayList<>();
+		for(Tarjeta t: u.getTarjetas()) {
+			tarjetas.add(t);
+		}
+		
+		return u;
+	}
 
+	
+	
 	
 	
 //	public List<Usuario> tarjetas(int id) {

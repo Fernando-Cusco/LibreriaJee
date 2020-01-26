@@ -3,19 +3,14 @@ package dao;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import modelo.Voto;
+import modelo.Tarjeta;
 
-public class VotoDao {
+public class TarjetaDao {
 
-	
 	@Inject
 	private EntityManager em;
 	
-	public void realizarVoto(Voto v) {
-		em.persist(v);
-		
+	public void agregarTarjeta(Tarjeta tarjeta) {
+		em.persist(tarjeta);
 	}
-	
-	
-	
 }

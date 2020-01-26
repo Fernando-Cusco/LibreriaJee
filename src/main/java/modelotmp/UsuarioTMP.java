@@ -5,6 +5,9 @@ public class UsuarioTMP {
 	private int id;
 	private String correo;
 	private String password;
+	
+	
+	
 	public int getId() {
 		return id;
 	}

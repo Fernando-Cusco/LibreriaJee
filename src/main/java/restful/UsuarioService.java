@@ -36,14 +36,15 @@ public class UsuarioService {
 	@Produces({MediaType.APPLICATION_JSON})
 	@Consumes({MediaType.APPLICATION_JSON})
 	public UsuarioTMP login(Usuario usuario) {
+		Usuario use = new Usuario();
 		UsuarioTMP u = new UsuarioTMP();
 		try {
-			usuario = user.login(usuario.getCorreo(), usuario.getPassword());
-			u.setId(usuario.getId());
-			u.setCorreo(usuario.getCorreo());
-			u.setPassword(usuario.getPassword());
+			use = user.login(usuario.getCorreo(), usuario.getPassword());
+			u.setId(use.getId());
+			u.setCorreo(use.getCorreo());
+			u.setPassword(use.getPassword());
 		} catch (Exception e) {
-			u = null;
+			u.setCorreo(e.getMessage());
 		}
 		return u;
 	}

@@ -1,9 +1,13 @@
 package modelo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -20,6 +24,12 @@ public class Tarjeta {
 	private String vencimiento;
 	@NotNull(message = "codigo es requerido")
 	private int code;
+	
+	@ManyToOne
+	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
+	private Usuario usuario;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -47,6 +57,12 @@ public class Tarjeta {
 	@Override
 	public String toString() {
 		return "Tarjeta [id=" + id + ", numero=" + numero + ", vencimiento=" + vencimiento + ", code=" + code + "]";
+	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	

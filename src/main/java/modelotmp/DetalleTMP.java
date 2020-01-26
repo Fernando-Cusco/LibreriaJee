@@ -5,6 +5,8 @@ public class DetalleTMP {
 	private int cantidad;
 
 	private int idLib;
+	
+	private int idUsuario;
 
 	public int getCantidad() {
 		return cantidad;
@@ -22,9 +24,19 @@ public class DetalleTMP {
 		this.idLib = idLib;
 	}
 
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
 	@Override
 	public String toString() {
-		return "DetalleTMP [cantidad=" + cantidad + ", idLib=" + idLib + "]";
+		return "DetalleTMP [cantidad=" + cantidad + ", idLib=" + idLib + ", idUsuario=" + idUsuario + "]";
 	}
+
+	
 
 }

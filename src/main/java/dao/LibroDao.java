@@ -32,7 +32,7 @@ public class LibroDao {
 		return em.find(Libro.class, id);
 	}
 	
-	public Libro buscarLibro(Integer id) {
+	public Libro buscarLibro(int id) {
 		String jpql = "SELECT l FROM Libro l where l.id = :id";
 		Query query = em.createQuery(jpql, Libro.class);
 		query.setParameter("id", id);

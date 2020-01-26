@@ -25,11 +25,13 @@
          data source, this example data source is just for development and testing! -->
       <!-- The datasource is deployed as WEB-INF/Libreria-ds.xml, you
          can find it in the source at src/main/webapp/WEB-INF/Libreria-ds.xml -->
-      <jta-data-source>java:jboss/datasources/ejPostgresDS</jta-data-source>
+         <!-- <jta-data-source>java:jboss/datasources/MySqlDS</jta-data-source> -->
+      <jta-data-source>java:/MySqlDS</jta-data-source>
       <properties>
          <!-- Properties for Hibernate -->
          <property name="hibernate.hbm2ddl.auto" value="update" />
          <property name="hibernate.show_sql" value="true" />
+         <property name="hibernate.format_sql" value="true" />
       </properties>
    </persistence-unit>
 </persistence>

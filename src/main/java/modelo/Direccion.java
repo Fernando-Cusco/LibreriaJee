@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -23,7 +25,9 @@ public class Direccion implements Serializable{
 	private String calles;
 	
 	
-	
+	@ManyToOne
+	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
+	private Usuario usuario;
 	
 	public Direccion() {
 		super();
@@ -51,6 +55,16 @@ public class Direccion implements Serializable{
 	public String toString() {
 		return "Direccion [id=" + id + ", ciudad=" + ciudad + ", calles=" + calles + "]";
 	}
+	
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+
 	/**
 	 * 
 	 */

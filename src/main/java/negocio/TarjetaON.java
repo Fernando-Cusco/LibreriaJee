@@ -16,4 +16,8 @@ public class TarjetaON {
 	public void agregarTarjeta(Tarjeta tarjeta) {
 		dao.agregarTarjeta(tarjeta);
 	}
+	
+	public Tarjeta buscarTarjeta(int id) {
+		return dao.buscarTarjeta(id);
+	}
 }

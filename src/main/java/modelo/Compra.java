@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -24,7 +25,7 @@ public class Compra {
 	@NotNull(message = "fecha es requerido")
 	private Date fecha;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	private Usuario usuario; // muchas Facturas o Compras un solo cliente
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -33,10 +34,10 @@ public class Compra {
 
 	private String descripcion;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	private Direccion direccion;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	private Tarjeta tarjeta;
 
 	public int getId() {
@@ -109,4 +110,5 @@ public class Compra {
 				+ ", descripcion=" + descripcion + "]";
 	}
 
+	
 }

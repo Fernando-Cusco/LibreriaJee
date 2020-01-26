@@ -39,15 +39,16 @@ public class Usuario implements Serializable {
 	private boolean permiso;
 	@NotNull
 	private String telefono;
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	
+	@OneToMany(fetch = FetchType.LAZY,  cascade = CascadeType.ALL, mappedBy = "usuario")
+	//@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	private List<Direccion> direcciones;
 
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "usuario")
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "usuario")
 	private List<Tarjeta> tarjetas;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Compra> compras;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

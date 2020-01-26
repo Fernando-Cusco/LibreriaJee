@@ -21,6 +21,7 @@ import modelotmp.DetalleCom;
 //import modelo.Detalle;
 import modelotmp.DetalleTMP;
 import negocio.CompraON;
+import negocio.DireccionON;
 import negocio.LibroON;
 import negocio.TarjetaON;
 import negocio.UsuarioON;
@@ -39,6 +40,9 @@ public class CompraService {
 
 	@Inject
 	private TarjetaON tarjetaOn;
+	
+	@Inject
+	private DireccionON direccionOn;
 	
 	@POST
 	@Path("/detalles")
@@ -82,6 +86,8 @@ public class CompraService {
 		c.setDetalles(dts);
 		c.setFecha(new Date());
 		c.setUsuario(u);
+		c.setDireccion(direccionOn.buscarDireccion(1));
+		c.setTarjeta(tarjetaOn.buscarTarjeta(1));
 		total = c.calcularTotal();
 		u.nuevaCompra(c);
 		compraOn.nuevaCompra(c);

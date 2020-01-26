@@ -13,4 +13,8 @@ public class TarjetaDao {
 	public void agregarTarjeta(Tarjeta tarjeta) {
 		em.persist(tarjeta);
 	}
+	
+	public Tarjeta buscarTarjeta(int id) {
+		return em.find(Tarjeta.class, id);
+	}
 }

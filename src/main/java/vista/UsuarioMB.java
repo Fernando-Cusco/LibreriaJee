@@ -25,10 +25,12 @@ public class UsuarioMB {
 
 	@PostConstruct
 	public void init() {
+		
 		usuario = new Usuario();
 		listar();
 		updated = false;
-		usuario.agregarDireccion(new Direccion());
+		buscar();
+		//usuario.agregarDireccion(new Direccion());
 	}
 
 	public String crearUsuario() {

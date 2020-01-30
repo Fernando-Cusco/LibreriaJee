@@ -39,8 +39,23 @@ public class UsuarioDao {
 		return em.find(Usuario.class, id);
 	}
 	
+	public Usuario search(int id) {
+		String jpql = "SELECT u FROM Usuario u JOIN FETCH u.direcciones where u.id = :id";
+		Query query = em.createQuery(jpql, Usuario.class);
+		query.setParameter("id", id);
+		Usuario usuario = (Usuario) query.getSingleResult();
+		List<Direccion> direcciones = new ArrayList<>();
+		for (Direccion direccion : usuario.getDirecciones()) {
+			direcciones.add(direccion);
+		}
+		return usuario;
+	}
+	
 	public void actualizarUsuaurio(Usuario usuario) {
-		em.merge(usuario);
+		if(buscar(usuario.getId()) == null) {
+			em.merge(usuario);
+		}
+		
 	}
 	
 	public Usuario login(String correo, String password) {
@@ -83,14 +98,7 @@ public class UsuarioDao {
 	
 	
 	
-	
-//	public List<Usuario> tarjetas(int id) {
-//		String jpql = "SELECT t FROM Usuario u, Tarjeta t where t = :id";
-//		Query query= em.createQuery(jpql, Usuario.class);
-//		query.setParameter("id", id);
-//		List<Usuario> tarjetas = query.getResultList();
-//		return tarjetas;
-//	}
+
 	
 }
 

@@ -29,6 +29,12 @@ public class Direccion implements Serializable{
 	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
 	private Usuario usuario;
 	
+	
+	
+	
+	public Direccion(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	public Direccion() {
 		super();
 		// TODO Auto-generated constructor stub

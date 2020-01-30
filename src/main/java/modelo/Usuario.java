@@ -18,9 +18,6 @@ import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "usuarios", uniqueConstraints = @UniqueConstraint(columnNames = "correo"))
 public class Usuario implements Serializable {
@@ -76,9 +73,13 @@ public class Usuario implements Serializable {
 		if (direcciones == null) {
 			direcciones = new ArrayList<Direccion>();
 		}
-		this.direcciones.add(direccion);
+		direcciones.add(direccion);
+		for (int i = 0; i < direcciones.size(); i++) {
+			System.out.println("Direcciones "+direcciones.get(i).toString());
+		}
 	}
-
+	
+	
 	public void agregarTarjeta(Tarjeta tarjeta) {
 		if (tarjetas == null) {
 			tarjetas = new ArrayList<>();

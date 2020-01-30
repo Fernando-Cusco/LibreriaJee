@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
 import modelo.Direccion;
@@ -11,31 +12,37 @@ import modelo.Usuario;
 import negocio.UsuarioON;
 
 @ManagedBean
+@ViewScoped
 public class UsuarioMB {
 
 	private boolean updated;
 	private String id;
 
 	private Usuario usuario;
-
+	
+	
+	
 	@Inject
 	private UsuarioON gestion;
 
 	private List<Usuario> usuarios;
+	
 
 	@PostConstruct
 	public void init() {
 		
 		usuario = new Usuario();
-		listar();
+		
 		updated = false;
-		buscar();
-		//usuario.agregarDireccion(new Direccion());
+		
+		usuario.agregarDireccion(new Direccion(usuario));
+		listar();
 	}
 
 	public String crearUsuario() {
 		System.out.println("ACUTLIZAR "+updated);
 		if (updated) {
+			System.out.println(updated);
 			gestion.actualizarUsuaurio(usuario);
 		} else {
 			gestion.crearUsuario(usuario);
@@ -46,7 +53,7 @@ public class UsuarioMB {
 	}
 
 	public String agregarDireccion() {
-		this.usuario.agregarDireccion(new Direccion());
+		usuario.agregarDireccion(new Direccion(usuario));
 		return null;
 	}
 
@@ -55,7 +62,6 @@ public class UsuarioMB {
 	}
 
 	public String eliminar(int id) {
-		System.out.println(id);
 		gestion.eliminar(id);
 		listar();
 		return null;
@@ -105,4 +111,15 @@ public class UsuarioMB {
 		this.updated = updated;
 	}
 
+
+	public UsuarioON getGestion() {
+		return gestion;
+	}
+
+	public void setGestion(UsuarioON gestion) {
+		this.gestion = gestion;
+	}
+	
+	
+	
 }

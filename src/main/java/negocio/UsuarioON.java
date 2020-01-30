@@ -6,7 +6,6 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import dao.UsuarioDao;
-import modelo.Tarjeta;
 import modelo.Usuario;
 
 @Stateless
@@ -28,7 +27,7 @@ public class UsuarioON {
 	}
 	
 	public Usuario buscar(int id) {
-		return dao.buscar(id);
+		return dao.search(id);
 	}
 	
 	public void actualizarUsuaurio(Usuario usuario) {

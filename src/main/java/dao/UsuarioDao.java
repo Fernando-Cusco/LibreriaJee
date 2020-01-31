@@ -68,7 +68,7 @@ public class UsuarioDao {
 		return usuario;
 	}
 	
-	public Usuario datosPago(int id) {
+	public Usuario obtenerDirecciones(int id) {
 		String jpql = "SELECT u FROM Usuario u JOIN FETCH u.direcciones where u.id = :id";
 		Query query = em.createQuery(jpql, Usuario.class);
 		query.setParameter("id", id);

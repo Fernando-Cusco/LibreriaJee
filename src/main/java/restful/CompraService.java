@@ -20,6 +20,7 @@ import modelo.Usuario;
 import modelotmp.DetalleCom;
 //import modelo.Detalle;
 import modelotmp.DetalleTMP;
+import modelotmp.TarjetaTMP;
 import negocio.CompraON;
 import negocio.DireccionON;
 import negocio.LibroON;
@@ -86,8 +87,8 @@ public class CompraService {
 		c.setDetalles(dts);
 		c.setFecha(new Date());
 		c.setUsuario(u);
-		c.setDireccion(direccionOn.buscarDireccion(1));
-		c.setTarjeta(tarjetaOn.buscarTarjeta(1));
+		c.setDireccion(direccionOn.buscarDireccion(detalles.get(0).getIdDireccion()));
+		c.setTarjeta(tarjetaOn.buscarTarjeta(detalles.get(0).getIdTarjeta()));
 		total = c.calcularTotal();
 		u.nuevaCompra(c);
 		compraOn.nuevaCompra(c);
@@ -97,10 +98,10 @@ public class CompraService {
 	}
 	
 	@GET
-	@Path("datospago")
+	@Path("direcciones")
 	@Produces({MediaType.APPLICATION_JSON})
 	public Usuario datosPago(@QueryParam("id") int id) {
-		return userOn.datosPago(id);
+		return userOn.obtenerDirecciones(id);
 	}
 	
 	@GET
@@ -114,15 +115,9 @@ public class CompraService {
 	@POST
 	@Path("agregarTarjeta")
 	@Produces({MediaType.APPLICATION_JSON})
-	public void agregarTarjeta(Tarjeta tarjeta) {
-		Usuario usuario = userOn.buscar(tarjeta.getId());
-		Tarjeta t = new Tarjeta();
-		t.setUsuario(usuario);
-		t.setNumero(tarjeta.getNumero());
-		t.setVencimiento(tarjeta.getVencimiento());
-		t.setCode(tarjeta.getCode());
-		usuario.agregarTarjeta(t);
-		tarjetaOn.agregarTarjeta(t);
+	@Consumes({MediaType.APPLICATION_JSON})
+	public Respuesta agregarTarjeta(TarjetaTMP tarjeta) {
+		return tarjetaOn.agregarTarjeta(tarjeta);
 	}
 	
 	

@@ -7,6 +7,10 @@ public class DetalleTMP {
 	private int idLib;
 	
 	private int idUsuario;
+	
+	private int idTarjeta;
+	
+	private int idDireccion;
 
 	public int getCantidad() {
 		return cantidad;
@@ -30,6 +34,24 @@ public class DetalleTMP {
 
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
+	}
+	
+	
+
+	public int getIdTarjeta() {
+		return idTarjeta;
+	}
+
+	public void setIdTarjeta(int idTarjeta) {
+		this.idTarjeta = idTarjeta;
+	}
+
+	public int getIdDireccion() {
+		return idDireccion;
+	}
+
+	public void setIdDireccion(int idDireccion) {
+		this.idDireccion = idDireccion;
 	}
 
 	@Override

@@ -38,8 +38,8 @@ public class UsuarioON {
 		return dao.login(correo, password);
 	}
 	
-	public Usuario datosPago(int id) {
-		return dao.datosPago(id);
+	public Usuario obtenerDirecciones(int id) {
+		return dao.obtenerDirecciones(id);
 	}
 	
 	public Usuario tarjetas(int id) {

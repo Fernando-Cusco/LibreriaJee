@@ -16,21 +16,12 @@ import negocio.VotoON;
 @Path("/votos")
 public class VotoService {
 	@Inject
-	VotoON votoOn;
+	private VotoON votoOn;
 	@GET
     @Path("/votar")
     @Produces(MediaType.APPLICATION_JSON)
-    public Voto addVoto(@QueryParam("usuario_id") int userId, @QueryParam("libro_id") int libroId) {
-        Voto v = new Voto();
-        Libro l = new Libro();
-        Usuario u= new Usuario();
-        l.setId(libroId);
-        u.setId(userId);
-
-        v.setLib(l);
-        v.setUser(u);
-		votoOn.realizarVoto(v); 
-		return v;
+    public Respuesta addVoto(@QueryParam("usuario_id") int userId, @QueryParam("libro_id") int libroId) {
+		return votoOn.realizarVoto(userId, libroId); 
     }
 
 }

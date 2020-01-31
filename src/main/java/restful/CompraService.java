@@ -15,11 +15,13 @@ import javax.ws.rs.core.MediaType;
 
 import modelo.Compra;
 import modelo.Detalle;
+import modelo.Direccion;
 import modelo.Tarjeta;
 import modelo.Usuario;
 import modelotmp.DetalleCom;
 //import modelo.Detalle;
 import modelotmp.DetalleTMP;
+import modelotmp.DireccionTMP;
 import modelotmp.TarjetaTMP;
 import negocio.CompraON;
 import negocio.DireccionON;
@@ -100,15 +102,32 @@ public class CompraService {
 	@GET
 	@Path("direcciones")
 	@Produces({MediaType.APPLICATION_JSON})
-	public Usuario datosPago(@QueryParam("id") int id) {
-		return userOn.obtenerDirecciones(id);
+	public List<DireccionTMP> datosPago(@QueryParam("id") int id) {
+		List<DireccionTMP> direcciones = new ArrayList<DireccionTMP>();
+		for(Direccion direccion: userOn.obtenerDirecciones(id).getDirecciones()) {
+			DireccionTMP tmp = new DireccionTMP();
+			tmp.setId(direccion.getId());
+			tmp.setCiudad(direccion.getCiudad());
+			tmp.setCalles(direccion.getCalles());
+			direcciones.add(tmp);
+		}
+		return direcciones;
 	}
 	
 	@GET
 	@Path("tarjetas")
 	@Produces({MediaType.APPLICATION_JSON})
-	public Usuario tarjetas(@QueryParam("id") int id) {
-		return userOn.tarjetas(id);
+	public List<TarjetaTMP> tarjetas(@QueryParam("id") int id) {
+		List<TarjetaTMP> tars = new ArrayList<TarjetaTMP>();
+		for(Tarjeta tarjeta: userOn.tarjetas(id).getTarjetas()) {
+			TarjetaTMP t = new TarjetaTMP();
+			t.setId(tarjeta.getId());
+			t.setNumero(tarjeta.getNumero());
+			t.setVencimiento(tarjeta.getVencimiento());
+			t.setCode(tarjeta.getCode());
+			tars.add(t);
+		}
+		return tars;
 	}
 	
 	

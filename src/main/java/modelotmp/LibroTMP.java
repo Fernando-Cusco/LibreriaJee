@@ -13,7 +13,7 @@ public class LibroTMP {
 	private String titulo;
 	private String descripcion;
 	
-	private String portada;
+	private byte[] portada;
 	private Date fechaPublicacion;
 	private int paginas;
 	private double precio;
@@ -45,11 +45,12 @@ public class LibroTMP {
 		this.descripcion = descripcion;
 	}
 
-	public String getPortada() {
+	
+	public byte[] getPortada() {
 		return portada;
 	}
 
-	public void setPortada(String portada) {
+	public void setPortada(byte[] portada) {
 		this.portada = portada;
 	}
 

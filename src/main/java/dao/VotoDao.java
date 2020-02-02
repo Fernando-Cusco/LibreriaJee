@@ -21,7 +21,7 @@ public class VotoDao {
 	}
 	
 	public List<Object[]> votos() {		
-		String sql = "select l.id, l.titulo, sum(v.lib_id) from votos v, libros l where l.id = v.lib_id group by l.id, l.titulo;";
+		String sql = "select l.id, l.titulo, COUNT(v.lib_id) from votos v LEFT JOIN libros l ON l.id = v.lib_id GROUP by l.id, l.titulo";
 		Query query = em.createNativeQuery(sql);
 		List<Object[]> votos = query.getResultList();
 		for (Object[] object : votos) {

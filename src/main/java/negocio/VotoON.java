@@ -1,5 +1,7 @@
 package negocio;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -11,6 +13,7 @@ import dao.VotoDao;
 import modelo.Libro;
 import modelo.Usuario;
 import modelo.Voto;
+import modelotmp.VotoTMP;
 import restful.Respuesta;
 
 @Stateless
@@ -51,7 +54,16 @@ public class VotoON {
 		return respuesta;
 	}
 	
-	public List<Object[]> votos() {
-		return dao.votos();
+	public List<VotoTMP> votos() {
+		List<Object[]> lista = dao.votos();
+		List<VotoTMP> votos = new ArrayList<VotoTMP>();
+		for (Object[] l : lista) {
+			VotoTMP lt = new VotoTMP();
+			lt.setId((int) l[0]);
+			lt.setTitulo((String) l[1]);
+			lt.setLikes(((BigInteger)l[2]).intValue());
+			votos.add(lt);
+		}
+		return votos;
 	}
 }

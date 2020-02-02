@@ -11,9 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import modelo.Libro;
-import modelo.Usuario;
-import modelo.Voto;
+import modelotmp.VotoTMP;
 import negocio.VotoON;
 @Path("/votos")
 public class VotoService {
@@ -29,7 +27,7 @@ public class VotoService {
 	@GET
 	@Path("/votos")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Object[]> votos() {
+	public List<VotoTMP> votos() {
 		return votoOn.votos();
 	}
 

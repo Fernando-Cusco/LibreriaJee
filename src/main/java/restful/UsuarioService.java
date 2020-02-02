@@ -3,6 +3,8 @@ package restful;
 
 
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -12,6 +14,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import modelo.Direccion;
 import modelo.Libro;
 import modelo.Usuario;
 import modelo.Voto;
@@ -53,16 +56,32 @@ public class UsuarioService {
 	@Path("/registro")
 	@Produces({MediaType.APPLICATION_JSON})
 	@Consumes({MediaType.APPLICATION_JSON})
-	public Respuesta registrar(Usuario usuario) {
-		System.out.println("LLEGANDO ESTOS DAOTS "+usuario.toString());
+	public Respuesta registrar(UsuarioTMP u) {
+		System.out.println("LLEGANDO ESTOS DAOTS "+u.toString());
 		Respuesta r = new Respuesta();
 		try {
+			Usuario usuario = new Usuario();
+			usuario.setNombres(u.getNombres());
+			usuario.setFecha(u.getFecha());
+			usuario.setCorreo(u.getCorreo());
+			usuario.setPassword(u.getPassword());
+			usuario.setTelefono(u.getTelefono());
+			List<Direccion> direcciones = u.getDirecciones();
+			for (Direccion direccion : direcciones) {
+				Direccion d = new Direccion();
+				d.setCiudad(direccion.getCiudad());
+				d.setCalles(direccion.getCalles());
+				d.setUsuario(usuario);
+				usuario.agregarDireccion(d);
+			}
 			user.crearUsuario(usuario);
 			r.setId(200);
 			r.setMensaje("Usuario: "+usuario.getNombres()+" creado exitosamente");
 		} catch (Exception e) {
+			
 			r.setId(400);
-			r.setMensaje("Error");
+			r.setMensaje("Error "+e.getMessage());
+			e.printStackTrace();
 			
 		}
 		return r;

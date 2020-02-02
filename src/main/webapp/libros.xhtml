@@ -3,9 +3,10 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	
 	xmlns:p="http://primefaces.org/ui">
 <!-- xmlns:h="http://java.sun.com/jsf/html" -->
-<!-- xmlns:h="http://xmlns.jcp.org/jsf/html" -->
+
 <h:head>
 
 </h:head>
@@ -41,7 +42,8 @@
 
 						<h:outputLabel value="Portada: " for="portada" />
 						<p:growl showDetail="true" />
-						<p:fileUpload value="#{libroMB.file}" mode="simple" />
+						<h:inputFile id="file" class="textbox"
+								value="#{libroMB.file}" />
 						<!-- <h:inputFile id="portada" value="#{libroMB.libro.portada}" requiredMessage="Sube una iamgen">
 								</h:inputFile> -->
 						<!-- <h:inputText class="form-control" value="#{libroMB.libro.portada}" id="portada" /> -->

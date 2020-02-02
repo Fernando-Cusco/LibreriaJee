@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -26,8 +27,8 @@ public class Libro {
 	@NotNull(message = "titulo es requerido")
 	private String titulo;
 	private String descripcion;
-	
-	private String portada;
+	@Lob
+	private byte[] portada;
 	@NotNull(message = "fecha publicacion es requerido")
 	@Column(name = "fecha_publicion")
 	private Date fechaPublicacion;
@@ -37,42 +38,44 @@ public class Libro {
 	private double precio;
 	@NotNull(message = "stock es requerido")
 	private int stock;
-	
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "libro_id")
 	private List<LibroAutor> autores;
-	
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Voto> votos;
-	
+
 	public void agregarAuto(LibroAutor libroAutor) {
-		if(this.autores == null) {
+		if (this.autores == null) {
 			this.autores = new ArrayList<LibroAutor>();
 		}
 		this.autores.add(libroAutor);
 	}
-	
+
 	public void agregarVoto(Voto voto) {
-		if(votos == null) {
+		if (votos == null) {
 			votos = new ArrayList<Voto>();
 		}
 		votos.add(voto);
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getTitulo() {
 		return titulo;
 	}
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
@@ -88,37 +91,38 @@ public class Libro {
 	public int getPaginas() {
 		return paginas;
 	}
+
 	public void setPaginas(int paginas) {
 		this.paginas = paginas;
 	}
+
 	public double getPrecio() {
 		return precio;
 	}
+
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
+
 	public int getStock() {
 		return stock;
 	}
+
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
 
-	
 	public int getId() {
 		return id;
 	}
 
-	public String getPortada() {
+	public byte[] getPortada() {
 		return portada;
 	}
 
-	public void setPortada(String portada) {
+	public void setPortada(byte[] portada) {
 		this.portada = portada;
 	}
-	
-	
-	
 
 	public List<LibroAutor> getAutores() {
 		return autores;
@@ -127,8 +131,6 @@ public class Libro {
 	public void setAutores(List<LibroAutor> autores) {
 		this.autores = autores;
 	}
-	
-	
 
 	public List<Voto> getVotos() {
 		return votos;
@@ -144,5 +146,5 @@ public class Libro {
 				+ ", fechaPublicacion=" + fechaPublicacion + ", paginas=" + paginas + ", precio=" + precio + ", stock="
 				+ stock + ", autores=" + autores + "]";
 	}
-	
+
 }

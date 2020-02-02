@@ -9,8 +9,6 @@ import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.servlet.http.Part;
 
-import org.primefaces.model.UploadedFile;
-
 import modelo.Autor;
 import modelo.Libro;
 import modelo.LibroAutor;

@@ -1,5 +1,6 @@
 package negocio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -7,6 +8,7 @@ import javax.inject.Inject;
 
 import dao.UsuarioDao;
 import modelo.Usuario;
+import modelotmp.UsuarioTMP;
 
 @Stateless
 public class UsuarioON {
@@ -20,6 +22,17 @@ public class UsuarioON {
 	
 	public List<Usuario> mostrarUsarios() {
 		return dao.mostrarUsuarios();
+	}
+	
+	public List<UsuarioTMP> listarUsuarios() {
+		List<UsuarioTMP> tmp = new ArrayList<UsuarioTMP>();
+		for(Object[] u: dao.listarUsuarios()) {
+			UsuarioTMP ust = new UsuarioTMP();
+			ust.setId((int)u[0]);
+			ust.setNombres((String) u[1]);
+			tmp.add(ust);
+		}
+		return tmp;
 	}
 	
 	public void eliminar(int id) {

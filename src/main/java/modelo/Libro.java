@@ -45,6 +45,9 @@ public class Libro {
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Voto> votos;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Compartir> compartidos;
 
 	public void agregarAuto(LibroAutor libroAutor) {
 		if (this.autores == null) {
@@ -60,6 +63,13 @@ public class Libro {
 		votos.add(voto);
 	}
 
+	public void compartirEnviar(Compartir compartir) {
+		if (compartidos == null) {
+			compartidos = new ArrayList<Compartir>();
+		}
+		compartidos.add(compartir);
+	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -138,6 +148,15 @@ public class Libro {
 
 	public void setVotos(List<Voto> votos) {
 		this.votos = votos;
+	}
+	
+
+	public List<Compartir> getCompartidos() {
+		return compartidos;
+	}
+
+	public void setCompartidos(List<Compartir> compartidos) {
+		this.compartidos = compartidos;
 	}
 
 	@Override

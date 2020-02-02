@@ -104,6 +104,11 @@ public class UsuarioService {
 		
 	}
 	
-	
+	@GET
+	@Path("/usuarios")
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<UsuarioTMP> usuarios() {
+		return user.listarUsuarios();
+	}
 	
 }

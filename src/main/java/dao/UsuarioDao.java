@@ -20,12 +20,25 @@ public class UsuarioDao {
 		em.persist(usuario);
 	}
 	
+	public List<Object[]> listarUsuarios() {
+		List<Object[]> id = new ArrayList<>();
+		String sql = "SELECT usu.id, usu.nombres FROM usuarios usu";
+		Query query = em.createNativeQuery(sql);
+		id = query.getResultList();
+		return id;
+	}
+	
 	public List<Usuario> mostrarUsuarios() {
 		String jqpl = "SELECT u FROM Usuario u";
 		Query query = em.createQuery(jqpl, Usuario.class);
 		List<Usuario> usuarios = query.getResultList();
 		for (Usuario usuario : usuarios) {
 			usuario.getDirecciones().size();
+//			usuario.setCompartidosEnviados(null);
+//			usuario.setCompartidosRecibidos(null);
+//			usuario.setCompras(null);
+//			usuario.setTarjetas(null);
+			
 		}
 		
 		return usuarios;

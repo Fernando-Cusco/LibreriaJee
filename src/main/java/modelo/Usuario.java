@@ -36,12 +36,11 @@ public class Usuario implements Serializable {
 	private boolean permiso;
 	@NotNull
 	private String telefono;
-	
-	@OneToMany(fetch = FetchType.LAZY,  cascade = CascadeType.ALL, mappedBy = "usuario")
-	//@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "usuario")
+	// @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	private List<Direccion> direcciones;
 
-	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "usuario")
 	private List<Tarjeta> tarjetas;
 
@@ -50,6 +49,9 @@ public class Usuario implements Serializable {
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Voto> votos;
+
+	
+	
 
 	public void agregarVoto(Voto voto) {
 		if (votos == null) {
@@ -75,11 +77,10 @@ public class Usuario implements Serializable {
 		}
 		direcciones.add(direccion);
 		for (int i = 0; i < direcciones.size(); i++) {
-			System.out.println("Direcciones "+direcciones.get(i).toString());
+			System.out.println("Direcciones " + direcciones.get(i).toString());
 		}
 	}
-	
-	
+
 	public void agregarTarjeta(Tarjeta tarjeta) {
 		if (tarjetas == null) {
 			tarjetas = new ArrayList<>();
@@ -174,6 +175,8 @@ public class Usuario implements Serializable {
 	public void setVotos(List<Voto> votos) {
 		this.votos = votos;
 	}
+
+
 
 	@Override
 	public String toString() {

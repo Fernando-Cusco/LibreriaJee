@@ -1,24 +1,23 @@
 package modelotmp;
 
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
 import modelo.Autor;
 
-
 public class LibroTMP {
 
-	
 	private int id;
 	private String titulo;
 	private String descripcion;
-	
+
 	private byte[] portada;
 	private Date fechaPublicacion;
 	private int paginas;
 	private double precio;
 	private int stock;
-	
+	private int cantidad;
 	private List<Autor> autores;
 
 	public int getId() {
@@ -45,7 +44,6 @@ public class LibroTMP {
 		this.descripcion = descripcion;
 	}
 
-	
 	public byte[] getPortada() {
 		return portada;
 	}
@@ -93,9 +91,13 @@ public class LibroTMP {
 	public void setAutores(List<Autor> autores) {
 		this.autores = autores;
 	}
-	
-	
-	
-	
-	
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
 }

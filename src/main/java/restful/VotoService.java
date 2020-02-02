@@ -2,6 +2,8 @@ package restful;
 
 
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -23,5 +25,12 @@ public class VotoService {
     public Respuesta addVoto(@QueryParam("usuario_id") int userId, @QueryParam("libro_id") int libroId) {
 		return votoOn.realizarVoto(userId, libroId); 
     }
+	
+	@GET
+	@Path("/votos")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Object[]> votos() {
+		return votoOn.votos();
+	}
 
 }

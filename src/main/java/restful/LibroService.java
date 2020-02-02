@@ -72,5 +72,12 @@ public class LibroService {
 		return autor.libroautor(0);
 	}
 	
+	@GET
+	@Path("/vendidos")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<LibroTMP> librosMasVendidos() {
+		return libro.librosMasVendidos();
+	}
+	
 
 }

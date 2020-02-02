@@ -55,5 +55,12 @@ public class LibroDao {
 		}
 		return libros;
 	}
+	
+	public List<Object[]> librosMasVendidos() {
+		String sql = "select lib.id, lib.titulo, lib.paginas, sum(det.cantidad) from libros lib LEFT JOIN detalles det on lib.id = det.libro_id group by lib.id, lib.titulo ";
+		Query query = em.createNativeQuery(sql);
+		List<Object[]> libros = query.getResultList();
+		return libros;
+	}
 }
 //String jpql = "SELECT a FROM Alumnos a WHERE a.nota_matematicas > ?1 AND a.nombre like = ?2"

@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -47,5 +49,9 @@ public class VotoON {
 			respuesta.setMensaje("error: "+e.getMessage());
 		}
 		return respuesta;
+	}
+	
+	public List<Object[]> votos() {
+		return dao.votos();
 	}
 }

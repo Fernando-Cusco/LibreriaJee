@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -43,6 +45,10 @@ public class CompartirON {
 			r.setMensaje("Error "+e.getMessage());
 		}
 		return r;
+	}
+	
+	public List<CompartirTMP> compartidosMe(int id) {
+		return dao.compartidosMe(id);
 	}
 	
 	

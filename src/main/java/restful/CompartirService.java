@@ -32,8 +32,8 @@ public class CompartirService {
 	@GET
 	@Path("/compartidos")
 	@Produces({MediaType.APPLICATION_JSON})
-	public List<Object> compartidos(@QueryParam("id") int id) {
-		return null;
+	public List<CompartirTMP> compartidos(@QueryParam("id") int id) {
+		return on.compartidosMe(id);
 	}
 	
 	

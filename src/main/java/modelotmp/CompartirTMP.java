@@ -7,6 +7,8 @@ public class CompartirTMP {
 	private int usuarioComparte;
 	
 	private int usuarioRecibe;
+	
+	private String nombreUsuario;
 
 	public int getLibro() {
 		return libro;
@@ -30,6 +32,15 @@ public class CompartirTMP {
 
 	public void setUsuarioRecibe(int usuarioRecibe) {
 		this.usuarioRecibe = usuarioRecibe;
+	}
+
+	
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
 
 	@Override

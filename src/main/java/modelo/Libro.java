@@ -42,6 +42,10 @@ public class Libro {
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "libro_id")
 	private List<LibroAutor> autores;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "libro_id")
+	private List<LibroCategoria> categorias;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Voto> votos;
@@ -54,6 +58,13 @@ public class Libro {
 			this.autores = new ArrayList<LibroAutor>();
 		}
 		this.autores.add(libroAutor);
+	}
+	
+	public void agregarCategoria(LibroCategoria libroCategoria) {
+		if(categorias == null) {
+			this.categorias = new ArrayList<LibroCategoria>();
+		}
+		this.categorias.add(libroCategoria);
 	}
 
 	public void agregarVoto(Voto voto) {
@@ -165,5 +176,14 @@ public class Libro {
 				+ ", fechaPublicacion=" + fechaPublicacion + ", paginas=" + paginas + ", precio=" + precio + ", stock="
 				+ stock + ", autores=" + autores + "]";
 	}
+
+	public List<LibroCategoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<LibroCategoria> categorias) {
+		this.categorias = categorias;
+	}
+	
 
 }

@@ -1,10 +1,10 @@
 package modelotmp;
 
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
 import modelo.Autor;
+import modelo.Categoria;
 
 public class LibroTMP {
 
@@ -19,6 +19,7 @@ public class LibroTMP {
 	private int stock;
 	private int cantidad;
 	private List<Autor> autores;
+	private List<Categoria> categorias;
 
 	public int getId() {
 		return id;
@@ -100,4 +101,13 @@ public class LibroTMP {
 		this.cantidad = cantidad;
 	}
 
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+
+	
 }

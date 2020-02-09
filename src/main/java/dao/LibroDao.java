@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import modelo.Categoria;
 import modelo.Libro;
 
 public class LibroDao {
@@ -24,6 +25,11 @@ public class LibroDao {
 		List<Libro> libros = query.getResultList();
 		for (Libro libro : libros) {
 			libro.getAutores().size();
+			System.out.println("hola");
+		}
+		int i = 0;
+		for(Libro libro: libros) {
+			libro.getCategorias().size();
 		}
 		return libros;
 	}
@@ -39,6 +45,9 @@ public class LibroDao {
 		Libro libro = (Libro) query.getSingleResult();
 		for(int i =0; i < libro.getAutores().size(); i++) {
 			libro.getAutores().get(i).getAutor().getId();
+		}
+		for(int i = 0; i < libro.getCategorias().size(); i++) {
+			libro.getCategorias().get(i).getCategoria().getId();
 		}
 		
 		return libro;

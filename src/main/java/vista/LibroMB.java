@@ -10,9 +10,12 @@ import javax.inject.Inject;
 import javax.servlet.http.Part;
 
 import modelo.Autor;
+import modelo.Categoria;
 import modelo.Libro;
 import modelo.LibroAutor;
+import modelo.LibroCategoria;
 import negocio.AutorON;
+import negocio.CategoriaON;
 import negocio.LibroON;
 
 @ManagedBean
@@ -29,6 +32,9 @@ public class LibroMB {
 
 	@Inject
 	private AutorON autoron;
+	
+	@Inject
+	private CategoriaON categoriaOn;
 
 	private Part file;
 
@@ -66,6 +72,11 @@ public class LibroMB {
 		libro.agregarAuto(new LibroAutor());
 		return null;
 	}
+	
+	public String agregarCategoria() {
+		libro.agregarCategoria(new LibroCategoria());
+		return null;
+	}
 
 	public void listar() {
 		this.libros = this.gestion.mostrarLibros();
@@ -78,6 +89,16 @@ public class LibroMB {
 			la.setAutor(a);
 		} catch (Exception e) {
 			System.out.println("ERRORRRR: " + e.getMessage());
+		}
+		return null;
+	}
+	
+	public String buscarCategoria(LibroCategoria ca) {
+		try {
+			Categoria c = this.categoriaOn.buscar(ca.getIdBuscarCategoria());
+			ca.setCategoria(c);
+		} catch (Exception e) {
+			
 		}
 		return null;
 	}

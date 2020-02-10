@@ -22,7 +22,7 @@ public class Detalle {
 	@JoinColumn(name = "libro_id")
 	private Libro libro;							//muchos detalles tiene un solo libro
 	
-	
+	private double subtotal;
 	
 	public int getId() {
 		return id;
@@ -49,6 +49,12 @@ public class Detalle {
 	@Override
 	public String toString() {
 		return "Detalle [id=" + id + ", cantidad=" + cantidad + ", libro=" + libro + "]";
+	}
+	public double getSubtotal() {
+		return subtotal;
+	}
+	public void setSubtotal(double subtotal) {
+		this.subtotal = subtotal;
 	}
 	
 	

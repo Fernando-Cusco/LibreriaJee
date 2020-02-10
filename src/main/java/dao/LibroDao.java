@@ -66,7 +66,7 @@ public class LibroDao {
 	}
 	
 	public List<Object[]> librosMasVendidos() {
-		String sql = "select lib.id, lib.titulo, lib.paginas, sum(det.cantidad) from libros lib LEFT JOIN detalles det on lib.id = det.libro_id group by lib.id, lib.titulo ";
+		String sql = "select lib.id, lib.titulo, lib.paginas, sum(det.cantidad) from libros lib LEFT JOIN detalles det on lib.id = det.libro_id group by lib.id, lib.titulo;";
 		Query query = em.createNativeQuery(sql);
 		List<Object[]> libros = query.getResultList();
 		return libros;

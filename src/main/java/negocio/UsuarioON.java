@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import dao.UsuarioDao;
+import modelo.Compra;
 import modelo.Usuario;
 import modelotmp.UsuarioTMP;
 
@@ -57,6 +58,10 @@ public class UsuarioON {
 	
 	public Usuario tarjetas(int id) {
 		return dao.tarjetas(id);
+	}
+	
+	public List<Compra> misCompras(int id) {
+		return dao.misCompras(id);
 	}
 	
 //	public List<Usuario> tarjetas(int id) {

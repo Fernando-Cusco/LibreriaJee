@@ -12,8 +12,10 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import modelo.Compra;
 import modelo.Direccion;
 import modelo.Libro;
 import modelo.Usuario;
@@ -109,6 +111,13 @@ public class UsuarioService {
 	@Produces({MediaType.APPLICATION_JSON})
 	public List<UsuarioTMP> usuarios() {
 		return user.listarUsuarios();
+	}
+	
+	@GET
+	@Path("/miscompras")
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<Compra> misCompras(@QueryParam("id") int id) {
+		return user.misCompras(id);
 	}
 	
 }

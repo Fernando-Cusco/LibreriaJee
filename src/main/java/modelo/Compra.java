@@ -39,6 +39,8 @@ public class Compra {
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	private Tarjeta tarjeta;
+	
+	private double total;
 
 	public int getId() {
 		return id;
@@ -110,5 +112,14 @@ public class Compra {
 				+ ", descripcion=" + descripcion + "]";
 	}
 
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
+	
 	
 }

@@ -7,9 +7,11 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import modelo.Compra;
 import modelo.Direccion;
 import modelo.Tarjeta;
 import modelo.Usuario;
+import modelo.Voto;
 
 public class UsuarioDao {
 	
@@ -106,6 +108,20 @@ public class UsuarioDao {
 		}
 		
 		return u;
+	}
+	
+	public List<Compra> misCompras(int id) {
+		String jpql = "SELECT c FROM Compra c JOIN FETCH c.detalles  where c.usuario.id = :id";
+		Query query = em.createQuery(jpql, Compra.class);
+		query.setParameter("id", id);
+		List<Compra> compras = query.getResultList();
+		for (int i = 0; i < compras.size(); i++) {
+			compras.get(i).getDetalles();
+			//compras.get(i).setUsuario(null);
+			
+		}
+		
+		return compras;
 	}
 
 	

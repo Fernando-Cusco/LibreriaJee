@@ -81,6 +81,7 @@ public class CompraService {
 			Detalle d = new Detalle();
 			d.setCantidad(detalle.getCantidad());
 			d.setLibro(libOn.buscarLibro(detalle.getIdLib()));
+			d.setSubtotal(d.calcularSubtotal());
 			dts.add(d);
 		}
 		
@@ -92,10 +93,10 @@ public class CompraService {
 		c.setDireccion(direccionOn.buscarDireccion(detalles.get(0).getIdDireccion()));
 		c.setTarjeta(tarjetaOn.buscarTarjeta(detalles.get(0).getIdTarjeta()));
 		total = c.calcularTotal();
+		c.setTotal(total);
 		u.nuevaCompra(c);
 		compraOn.nuevaCompra(c);
 		
-		System.out.println(c.toString()+" "+total);
 		return total;
 	}
 	
